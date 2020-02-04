@@ -1,0 +1,42 @@
+use simplyDB
+
+db.createCollection("users")
+
+db.createCollection("tasks")
+
+db.users.insert({
+    _id: 0,
+    name: "Erik",
+    username: "erik1994",
+    gender: "male",
+    tasks: [0, 1, 2]
+})
+
+db.users.update(
+{"_id" : 0},
+{$set: {"name" : "Erik Galstian"}})
+
+db.users.distinct("username")
+
+db.users.find({gender: "female"})
+
+db.tasks.updateMany(
+	{“completed”: false},
+	{$set: {
+		“_id”: 0,
+		“title”: “Updated title”,
+		“text”: “Updated text”,
+		“completed”: true,
+		“created”: “02 Feb 2020 13:27”,
+		“updated”: “04 Feb 2020 11:38”
+	}}
+)
+
+db.tasks.remove({completed: true})
+
+/////////// Last task. Don't know how to write this command correctly
+
+const arr = db.users.find({_id = 0}).tasks
+for (i=0; i<3; i++) {
+    db.tasks.find({_id = arr[i]}, {completed: false}).sort({created: 1})
+}
