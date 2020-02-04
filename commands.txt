@@ -23,12 +23,7 @@ db.users.find({gender: "female"})
 db.tasks.updateMany(
 	{“completed”: false},
 	{$set: {
-		“_id”: 0,
-		“title”: “Updated title”,
-		“text”: “Updated text”,
 		“completed”: true,
-		“created”: “02 Feb 2020 13:27”,
-		“updated”: “04 Feb 2020 11:38”
 	}}
 )
 
