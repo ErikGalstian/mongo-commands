@@ -37,6 +37,6 @@ db.tasks.remove({completed: true})
 /////////// Last task. Don't know how to write this command correctly
 
 const arr = db.users.find({_id = 0}).tasks
-for (i=0; i<3; i++) {
+for (i=0; i<arr.length; i++) {
     db.tasks.find({_id = arr[i]}, {completed: false}).sort({created: 1})
 }
